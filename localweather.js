@@ -4,6 +4,8 @@ var curWeather = { "tempF": 0,
                    "city": ""
                  };
 
+var weatherAPIkey = ; //key here
+
 function loadWeather() {
   $.getJSON("https://ipapi.co/json", function(location) {
     if(location) {
@@ -16,7 +18,7 @@ function loadWeather() {
 }
 
 function getWeather(lat,lon) {
-  var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=47baff97fa54bd133202d2cd649cabd4";
+  var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + weatherAPIkey + '"';
   $.getJSON(weatherAPI, function(weather) {
     curWeather.tempC = Math.round(weather.main.temp - 273.15);
     curWeather.tempF = Math.round(((weather.main.temp - 273.15) * (9.0 / 5.0)) + 32.0);
